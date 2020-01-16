@@ -28,6 +28,7 @@ public class SceneStep : MonoBehaviour
     private Text _timeText, _finishScoreText;
 
     private float _startTime, _finishScore;
+    private bool _crashed;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class SceneStep : MonoBehaviour
             _road[i].transform.position += Vector3.forward * 20;
         }
         _running = false;
+        _crashed = false;
         restartMenu.SetActive(false);
         startMenu.SetActive(true);
         playingMenu.SetActive(false);
@@ -51,7 +53,11 @@ public class SceneStep : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_running) return;
+        if (!_crashed)
+        {
+            player.transform.position += Vector3.forward * 0.15f;
+        }
+        
         // Infinite road
         if (player.transform.position.z >= _road[2].transform.position.z - 10f)
         {
@@ -63,6 +69,8 @@ public class SceneStep : MonoBehaviour
             }
             _road[_road.Length - 1] = temp;
         }
+        
+        if (!_running) return;
 
         // Remove old mobs
         _mobs.RemoveWhere(mob =>
@@ -86,9 +94,7 @@ public class SceneStep : MonoBehaviour
             mob.AddComponent<MobControl>().speed = Random.Range(0.05f, 0.5f);
             _mobs.Add(mob);
         }
-        
-        player.transform.position += Vector3.forward * 0.15f;
-        
+
         _timeText.text = "TIME: " + (Time.time - _startTime).ToString("0.00") + "s";
     }
     
@@ -104,6 +110,7 @@ public class SceneStep : MonoBehaviour
     
     IEnumerator AddRestartMenu()
     {
+        _crashed = true;
         _finishScore = Time.time - _startTime;
         _finishScoreText.text = "SCORE: " + _finishScore.ToString("0.00") + "s";
         yield return new WaitForSeconds(0.5f);
