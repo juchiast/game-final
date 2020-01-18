@@ -10,7 +10,7 @@
 Trò chơi điều khiển phi thuyền trên đường băng né tránh các phi thuyền đang tấn công.
 
 ## Link web game
-Game có thể chơi trực tuyến lại [đây](untitled-ufo-game.firebaseapp.com).
+Game có thể chơi trực tuyến lại [đây](https://untitled-ufo-game.firebaseapp.com).
 ## Phiên bản Unity
 2019.3.0f5
 
