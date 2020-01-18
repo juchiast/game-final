@@ -14,6 +14,10 @@ Game có thể chơi trực tuyến lại [đây](https://untitled-ufo-game.fire
 ## Phiên bản Unity
 2019.3.0f5
 
-Resource: 
+## Nguồn tham khảo
+Trang web vẽ poster: https://www.postermywall.com/
+
+
+##Resource: 
 
 https://www.poliigon.com/texture/city-street-road-asphalt-two-lane-worn-001
